@@ -1,1 +1,2 @@
-creating hello world 
+HELLO C
+welcome to learning C
