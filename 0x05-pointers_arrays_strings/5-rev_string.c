@@ -18,7 +18,7 @@ void rev_string(char *s)
 		counter++;
 	counter -= 1;
 
-	while (counter > 1)
+	while (counter > i)
 	{
 		swap = s[i];
 		s[i] = s[counter];
