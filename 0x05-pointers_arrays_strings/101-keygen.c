@@ -11,15 +11,28 @@
 
 int main(void)
 {
-	srand((unsigned int)(time(NULL)));
-	int i;
-	char pass[12];
+	int ascii = 2772, i = 0, j, random;
+	char password[100];
+	time_t t;
 
-
-	for (i = 0; i < 12; i++)
+	srand((int) time(&t));
+	while (ascii > 126)
 	{
-		pass[i] = 33 + rand() % 94;
+		random = rand() % 126;
+		password[i] = random;
+		ascii -= random;
+		i++;
 	}
-	pass[i] = '\0';
-	printf("%s\n", pass);
+	if (ascii > 0)
+		password[i] = ascii;
+	else
+	{
+		i--;
+	}
+
+	for (j = 0; j <= i; j++)
+	{
+		printf("%c", password[j]);
+	}
+	return (0);
 }
