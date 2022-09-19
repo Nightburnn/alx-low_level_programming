@@ -12,12 +12,11 @@ void puts2(char *str)
 
 	while (str[counter] != '\0')
 	{
-		{
 	if (counter % 2 == 0)
 
 	_putchar(str[counter]);
 	counter++;
 	}
 		_putchar(10);
-}
+
 }
