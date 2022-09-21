@@ -1,85 +1,73 @@
-#include "main.h"
+#include "holberton.h"
 #include <stdio.h>
 
 /**
- * isPrintableASCII - determines if n is a printable ASCII char
- * @n: integer
- * Return: 1 if true, 0 if false
- */
-int isPrintableASCII(int n)
+* printit - a helper function
+* @c: a character to see fi it is printable
+*
+* Description: checks the character
+* Return: a 1 or 0 for true or false
+*/
+int printit(char c)
 {
-
-	return (n >= 32 && n <= 126);
-
+	if ((c < 32 && c >= 0) || c > 126)
+		return (0);
+	return (1);
 }
 
 /**
- * printHexes - print hex values for string b in formatted form
- * @b: string to print
- * @start: starting position
- * @end: ending position
- */
-void printHexes(char *b, int start, int end)
-{
-	int i = 0;
+* print_buffer - a function that prints a buffer
+* @b: a char pointer given by main that represents a string
+* @size: a size of bytes given by main
+*
+* Description: lots of formatting and stuff to do in this one
+* Return: is void
+*/
 
-	while (i < 10)
-	{
-		if (i < end)
-			printf("%02x", *(b + start + i));
-		else
-			printf(" ");
-		if (i % 2)
-			printf(" ");
-		i++;
-	}
-}
-
-/**
- * printASCII -print ascii values for string b,
- * formatted to replace nonprintable chars with '.'
- * @b: string to print
- * @start: starting position
- * @end: ending position
- */
-void printASCII(char *b, int start, int end)
-{
-	int ch, i = 0;
-
-	while (i < end)
-	{
-		ch = *(b + i + start);
-
-		if (!isPrintableASCII(ch))
-			ch = 46;
-		printf("%c", ch);
-		i++;
-	}
-}
-
-/**
- * print_buffer - prints a buffer
- * @b: string
- * @size: size of buffer
- */
 void print_buffer(char *b, int size)
 {
+	int s1 = size;
+	int s2 = size;
+	char *ptr1 = b;
+	char *ptr2 = b;
+	int i = 0;
+	int j = 0;
+	int k = 0;
 
-	int start, end;
-
-	if (size > 0)
+	if (size <= 0)
+		printf("\n");
+	while (size > 0)
 	{
-		for (start = 0; start < size; start += 10)
+		size -= 10;
+		printf("%08x: ", 10 * k);
+		k++;
+		for (i = 0; i < 5; i++)
 		{
-
-			end = (size - start < 10) ? size - start : 10;
-
-			printf("%08x: ", start);
-			printHexes(b, start, end);
-			printASCII(b, start, end);
-			printf("\n");
+			for (j = 0; j < 2; j++)
+			{
+				if (s1 == 0)
+					printf("  ");
+				if (s1 > 0)
+				{
+					printf("%02x", *ptr1);
+					s1--;
+					ptr1++;
+				}
+			}
+				putchar(' ');
 		}
-}
-else
-printf("\n");
+		for (i = 0; i < 10; i++)
+		{
+			if (s2 > 0)
+			{
+				if (printit(*ptr2))
+					printf("%c", *ptr2);
+				else
+					putchar('.');
+				s2--;
+				ptr2++;
+			}
+		}
+	printf("\n");
+	}
 }
