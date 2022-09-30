@@ -8,7 +8,7 @@
  * Return: 0, it's void
  */
 
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
 	(void) argv;
 
