@@ -10,9 +10,9 @@
 
 int main(int argc, char **argv)
 {
-	int Night = 0;
+	int night = 0;
 
-	while (Night++ < argc)
+	while (night++ < argc)
 
 		printf("%s\n", *argv++)
 
