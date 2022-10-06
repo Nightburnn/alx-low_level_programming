@@ -1,127 +1,86 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
- * _memset - fills memory with a constant byte
- *
- * @s: input pointer that represents memory block
- *     to fill
- * @b: characters to fill/set
- * @n: number of bytes to be filled
- * Return: pointer to the filled memory area
+ * _puts - prints a string, followed by a new line,
+ * @str: pointer to the string to print
+ * Return: void
  */
 
-char *_memset(char *s, char b, unsigned int n)
+void _puts(char *str)
 {
-	unsigned int i = 0;
+int i = 0;
+while (str[i])
+{
+	_putchar(str[i]);
+	i++;
+}
 
-	while (i < n)
-	{
-		s[i] = b;
-		i++;
-	}
-	return (s);
 }
 
 /**
- * _calloc - function that allocates memory
- *           for an array using memset
- * @nmemb: size of array
- * @size: size of each element
- *
- * Return: pointer to new allocated memory
+ * _atoi - convert a string to an integer.
+ * @s: char type string
+ * Return: integer converted
  */
 
-void *_calloc(unsigned int nmemb, unsigned int size)
+int _atoi(const char *s)
 {
-	char *ptr;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (NULL);
-	_memset(ptr, 0, nmemb * size);
+	int sign = 1;
+	unsigned long int resp = 0, firstNum, i;
 
-	return (ptr);
-}
-
-/**
- * multiply - initialize array with 0 byte
- * @s1: string 1
- * @s2: string 2
- * Return: nothing
- */
-
-void multiply(char *s1, char *s2)
-{
-	int i, l1, l2, total_l, f_digit, s_digit, res = 0, tmp;
-	char *ptr;
-	void *temp;
-
-	l1 = _length(s1);
-	l2 = _length(s2);
-	tmp = l2;
-	total_l = l1 + l2;
-	ptr = _calloc(sizeof(int), total_l);
-
-	/* store our pointer address to free later */
-	temp = ptr;
-
-	for (l1--; l1 >= 0; l1--)
+	for (firstNum = 0; !(s[firstNum] >= 48 && s[firstNum] <= 57); firstNum++)
 	{
-		f_digit = s1[l1] - '0';
-		res = 0;
-		l2 = tmp;
-		for (l2--; l2 >= 0; l2--)
+		if (s[firstNum] == '-')
 		{
-			s_digit = s2[l2] - '0';
-			res += ptr[l2 + l1 + 1] + (f_digit * s_digit);
-			ptr[l1 + l2 + 1] = res % 10;
-			res /= 10;
+			sign *= -1;
 		}
-
-		if (res)
-			ptr[l1 + l2 + 1] = res % 10;
 	}
 
-	while (*ptr == 0)
+	for (i = firstNum; s[i] >= 48 && s[i] <= 57; i++)
 	{
-		ptr++;
-		total_l--;
+		resp *= 10;
+		resp += (s[i] - 48);
 	}
-
-	for (i = 0; i < total_l; i++)
-		printf("%i", ptr[i]);
-	printf("\n");
-	free(temp);
+	return (sign * resp);
 }
 
-
 /**
- * main - Entry point
- * Description: a program that multiplies
- *            two positive numbers
- * @argc: number of arguments
- * @argv: arguments array
- * Return: 0 on success 98 on faliure
+ * print_int - prints an integer.
+ * @n: int
+ * Return: 0
  */
 
-int main(int argc, char *argv[])
+void print_int(unsigned long int n)
 {
-	char *n1 = argv[1];
-	char *n2 = argv[2];
 
-	if (argc != 3 || check_number(n1) || check_number(n2))
-		error_exit();
+unsigned  long int divisor = 1, i, resp;
 
-	if (*n1 == '0' || *n2 == '0')
-	{
-		_putchar('0');
-		_putchar('\n');
-	}
-	else
-		multiply(n1, n2);
-	return (0);
+for (i = 0; n / divisor > 9; i++, divisor *= 10)
+;
+for (; divisor >= 1; n %= divisor, divisor /= 10)
+{
+	resp = n / divisor;
+	_putchar('0' + resp);
+}
+}
+
+/**
+ * main - print the result of the multiplication, followed by a new line
+ * @argc: int
+ * @argv: list
+ * Return: 0
+ */
+int main(int argc, char const *argv[])
+{
+(void)argc;
+
+if (argc != 3)
+{
+	_puts("Error ");
+	exit(98);
+}
+print_int(_atoi(argv[1]) * _atoi(argv[2]));
+_putchar('\n');
+return (0);
 }
