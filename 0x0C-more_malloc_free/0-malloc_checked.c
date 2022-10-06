@@ -8,13 +8,13 @@
 
 void *malloc_checked(unsigned int b)
 {
-	void *night;
+	void *night;/*void pointer*/
 
-	night = malloc(b);
+	night = malloc(b);/*allocates memory of b*/
 
-	if (night == NULL)
+	if (night == NULL)/* if night is null terminates with exit*/
 	{
-		exit(98);
+		exit(98);/* exit function terminates the call immediately*/
 	}
-	return (night);
+	return (night);/* return pointer if malloc is sucessful*/
 }
