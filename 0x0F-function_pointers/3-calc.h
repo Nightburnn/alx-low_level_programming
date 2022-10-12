@@ -1,14 +1,6 @@
-#ifndef CALC_H
+#ifndef _CALC_H
 
-#define CALC_H
-
-
-
-#include <stdio.h>
-
-#include <stdlib.h>
-
-#include <string.h>
+#define _CALC_H
 
 
 
@@ -22,7 +14,7 @@
 
  * @f: The function associated
 
- */
+*/
 
 typedef struct op
 
@@ -50,4 +42,4 @@ int (*get_op_func(char *s))(int, int);
 
 
 
-#endif
+#endif /* _CALC_H */
