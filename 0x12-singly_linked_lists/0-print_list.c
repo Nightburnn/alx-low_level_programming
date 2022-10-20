@@ -20,5 +20,5 @@ size_t print_list(const list_t *h)
 		h = h->next;
 		night++;
 	}
-	return (kendra);
+	return (night);
 }
