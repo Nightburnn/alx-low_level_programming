@@ -1,4 +1,4 @@
-<img src="https://scontent.flos1-2.fna.fbcdn.net/v/t1.6435-9/42545087_687065241666602_3797983212702007296_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=ToYlKGlcOzIAX-8YiPW&_nc_ht=scontent.flos1-2.fna&oh=00_AfAdUC5HFL4IhxMxaPAjD-QL2OHN8SXNbBsi3kJvCPs6jQ&oe=645F31E9" width="250" height="250" alt="meme for search alogrithm">
+<img src="https://scontent.flos1-2.fna.fbcdn.net/v/t1.6435-9/42545087_687065241666602_3797983212702007296_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=ToYlKGlcOzIAX-8YiPW&_nc_ht=scontent.flos1-2.fna&oh=00_AfAdUC5HFL4IhxMxaPAjD-QL2OHN8SXNbBsi3kJvCPs6jQ&oe=645F31E9" width="300" height="250" alt="meme for search alogrithm">
 
 ## Search Algorithms 
 ##### What is a search algorithm?
